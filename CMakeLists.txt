@@ -40,6 +40,8 @@ SET(CMAKE_POLICY_DEFAULT_CMP0092 NEW)
 
 CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
 
+message("mishu - entry")
+
 # Toggles the use of the hunter package manager
 option(ASSIMP_HUNTER_ENABLED "Enable Hunter package manager support" OFF)
 
@@ -277,6 +279,8 @@ ELSEIF (CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
   ENDIF()
   SET(CMAKE_CXX_FLAGS "-fvisibility=hidden -fno-strict-aliasing -Wall -Wno-long-long ${CMAKE_CXX_FLAGS}" )
   SET(CMAKE_C_FLAGS "-fno-strict-aliasing ${CMAKE_C_FLAGS}")
+  message("mishu")
+  message(${CMAKE_CXX_FLAGS})
 ELSEIF( CMAKE_COMPILER_IS_MINGW )
   IF (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 7.0)
     message(FATAL_ERROR "MinGW is too old to be supported. Please update MinGW and try again.")

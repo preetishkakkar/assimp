@@ -44,6 +44,22 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 message("mishu - entry")
 
+if (UNIX)
+    if(DEFINED ENV{UE4_ROOT})
+        # Build/link against UE's packaged Linux toolchain instead of system-installed toolchain
+        # Note: This must be set BEFORE `project()` is called
+        message("ASSIMP - Building/linking against Unreal packaged toolchain from UE4_ROOT=$ENV{UE4_ROOT}")
+        set(CMAKE_TOOLCHAIN_FILE "unreal-linux-toolchain.cmake")
+        link_directories("$ENV{UE4_ROOT}/Engine/Source/ThirdParty/Linux/LibCxx/lib/Linux/x86_64-unknown-linux-gnu")
+    else()
+        message("ASSIMP - Building/linking against system-installed toolchain")
+        set(CMAKE_C_COMPILER clang-10)
+        set(CMAKE_CXX_COMPILER clang++-10)
+    endif()
+endif()
+
+
+
 # Toggles the use of the hunter package manager
 option(ASSIMP_HUNTER_ENABLED "Enable Hunter package manager support" OFF)
 

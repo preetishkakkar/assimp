@@ -40,6 +40,8 @@ SET(CMAKE_POLICY_DEFAULT_CMP0092 NEW)
 
 CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 message("mishu - entry")
 
 # Toggles the use of the hunter package manager
